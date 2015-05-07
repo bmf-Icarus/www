@@ -26,6 +26,7 @@
 						<option value="RB">Halfback</option>
 						<option value="WR">Wide Reciever</option>
 						<option value="DB">Defense</option>
+						<option value="GM">Games</option>
 					</select>
 				</p>
 				
@@ -60,7 +61,12 @@
 					var optionArray = ['All Stats', 'Tackles', 'Sacks',
 							 'Defensive Touchdowns'];
 				
+				} else if (s1.value == "GM") {
+					var optionArray = ['All Stats', 'Home Team', 'Away Team', 'Home Score', 'Away Score'];
+				
+				
 				}
+
 				
 				for(var option in optionArray) {
 					var newOption = document.createElement("option");

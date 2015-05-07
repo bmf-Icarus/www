@@ -79,6 +79,18 @@
 				case "Defensive Touchdowns":
 					$select = "DefTds";
 					break;
+				case "Home Team":
+					$select = "HomeTeam";
+					break;
+				case "Away Team":
+					$select = "AwayTeam";
+					break;
+				case "Home Score":
+					$select = "HomeScore";
+					break;
+				case "Away Score":
+					$select = "AwayScore";
+					break;
 			}
 			
 			switch ( $position ) {
@@ -94,6 +106,9 @@
 					break;
 				case "DB":
 					$from = "Player, DefStats";
+					break;
+				case "GM":
+					$from = "Games";
 					break;
 			}
 			
