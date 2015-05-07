@@ -20,8 +20,9 @@
 		<form method = "post" action = "database.php">
 			<div>
 				<p>Select position:
-					<select name = "position" id = "position">
-						<option value="QB" selected = "selected">Quarterback</option>
+					<select name = "position" id = "position" onchange="populate(this.id, 'stats')">
+						<option selected="selected">null</option>
+						<option value="QB">Quarterback</option>
 						<option value="RB">Halfback</option>
 						<option value="WR">Wide Reciever</option>
 						<option value="DB">Defense</option>
@@ -29,7 +30,7 @@
 				</p>
 				
 				<p>Select stats:
-					<select name = "stats" id = "stats">
+					<select name = "stats[]" id = "stats" >
 						<!-- js populates -->
 					</select>
 				</p>
@@ -39,39 +40,36 @@
 		</form>
 		
 		<script type="text/javascript">
-			/*
-			From JavaScript and Forms Tutorial at dyn-web.com
-			Find information and updates at http://www.dyn-web.com/tutorials/forms/
-			*/
-
-			var Select_List_Data = {
-			    
-			    // name of associated select list
-			    'stats': {
-			        
-			        // names match option values in controlling select list
-			        QB: {
-			            	text: ['All Stats', 'Pass Yards', 'Pass Touchdowns',
-							 'Interceptions', 'Completion Percentage']
-			        	},
+			
+			function populate( s1, s2 ) {
+				var s1 = document.getElementById(s1);
+				var s2 = document.getElementById(s2);
+				s2.innerHTML = "";
+				if (s1.value == "QB"){
+					var optionArray = ['All Stats', 'Pass Yards', 'Pass Touchdowns',
+							 'Interceptions', 'Completion Percentage'];
+				} else if (s1.value == "RB"){
+					var optionArray = ['All Stats', 'Rush Attempts', 'Rush Yards',
+							 'Rush Touchdowns', 'Fumbles'];
 					
-			        RB: {
-			                text: ['All Stats', 'Rush Attempts', 'Rush Yards',
-							 'Rush Touchdowns', 'Fumbles']
-			            },
-			        WR: {
-			                text: ['All Stats', 'Receptions', 'Reception Yards',
-							 'Reception Touchdowns', 'Drops']
-			            },
-
-			        DB: {
-			                text: ['All Stats', 'Tackles', 'Sacks',
-							 'Defensive Touchdowns']
-			            },
-
+				} else if (s1.value == "WR"){
+					var optionArray = ['All Stats', 'Receptions', 'Reception Yards',
+							 'Reception Touchdowns', 'Drops'];
+				
+				} else if (s1.value == "DB"){
+					var optionArray = ['All Stats', 'Tackles', 'Sacks',
+							 'Defensive Touchdowns'];
+				
 				}
-
-			};
+				
+				for(var option in optionArray) {
+					var newOption = document.createElement("option");
+					newOption.innerHTML = optionArray[option];
+					s2.options.add(newOption);
+					
+				}
+			}
+			
 			
 		</script>
 		
