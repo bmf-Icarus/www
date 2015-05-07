@@ -36,16 +36,15 @@
 					break;
 				case "Pass Yards":
 					$select = "Name, GameID, PassYds";
-					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
 					break;
 				case "Pass Touchdowns":
-					$select = "PassTds*";
+					$select = "Name, GameID, PassTds";
 					break;
 				case "Interceptions":
-					$select = "Int";
+					$select = "Name, GameID, Int";
 					break;
 				case "Completion Percentage":
-					$select = "CompPercent";
+					$select = "Name, GameID, CompPercent";
 					break;
 				case "Rush Attempts":
 					$select = "RushAtt";
@@ -85,6 +84,7 @@
 			switch ( $position ) {
 				case "QB":
 					$from = "Player, QBStats";
+					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
 					break;
 				case "RB":
 					$from = "Player, RBStats";
@@ -123,7 +123,7 @@
 						print("<td>$value</td>" );
 					}
 					print( "</tr>" );
-					
+					$count++;
 				}
 
 			?>
