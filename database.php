@@ -27,11 +27,42 @@
 			$db = new SQLite3("DBFinalProject.db");
 
 			extract($_POST);
-			print("$position");
-			print("$stats");
 			
-			//$query = "SELECT ".$what. "FROM ".$where;	
-			$results = $db->query("SELECT * FROM Player");
+			switch ( $stats ) {
+				case "All Stats":
+					$select = "*";
+					break;
+				case "Pass Yards":
+					$select = "PassYds";
+					break;
+				case "Pass TDs":
+					$select = "PassTds*";
+					break;
+				case "INTs":
+					$select = "Int";
+					break;
+				case "Comp Percent":
+					$select = "CompPercent";
+					break;
+			}
+			
+			switch ( $position ) {
+				case "Quarterback":
+					$from = "Player, QBStats";
+					break;
+				case "Halfback":
+					$from = "RBStats";
+					break;
+				case "Wide Reciever":
+					$from = "WRStats";
+					break;
+				case "Defense":
+					$from = "DefStats";
+					break;
+			}
+			
+			$query = "SELECT " . $select. " FROM " . $from;
+			$results = $db->query($query);
 			
 		?>
 		<h3>Search Results</h3>

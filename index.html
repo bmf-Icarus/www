@@ -20,28 +20,61 @@
 		<form method = "post" action = "database.php">
 			<div>
 				<p>Select position:
-					<select name = "position">
-						<option selected = "selected">Quarterback</option>
-						<option>Halfback</option>
-						<option>Wide Reciever</option>
-						<option>Defense</option>
+					<select name = "position" id = "position">
+						<option value="QB" selected = "selected">Quarterback</option>
+						<option value="RB">Halfback</option>
+						<option value="WR">Wide Reciever</option>
+						<option value="DB">Defense</option>
 					</select>
 				</p>
 				
 				<p>Select stats:
-					<select name = "stats">
-						<option selected = "selected">All Stats</option>
-						<option>Pass Yards</option>
-						<option>Pass TDs</option>
-						<option>INTs</option>
-						<option>Comp Percent</option>
-
+					<select name = "stats" id = "stats">
+						<!-- js populates -->
 					</select>
 				</p>
 				<input type = "submit" value = "Send Query" />
 				
 			</div>
 		</form>
-	</body>
+		
+		<script type="text/javascript">
+			/*
+			From JavaScript and Forms Tutorial at dyn-web.com
+			Find information and updates at http://www.dyn-web.com/tutorials/forms/
+			*/
 
+			var Select_List_Data = {
+			    
+			    // name of associated select list
+			    'stats': {
+			        
+			        // names match option values in controlling select list
+			        QB: {
+			            	text: ['All Stats', 'Pass Yards', 'Pass Touchdowns',
+							 'Interceptions', 'Completion Percentage']
+			        	},
+					
+			        RB: {
+			                text: ['All Stats', 'Rush Attempts', 'Rush Yards',
+							 'Rush Touchdowns', 'Fumbles']
+			            },
+			        WR: {
+			                text: ['All Stats', 'Receptions', 'Reception Yards',
+							 'Reception Touchdowns', 'Drops']
+			            },
+
+			        DB: {
+			                text: ['All Stats', 'Tackles', 'Sacks',
+							 'Defensive Touchdowns']
+			            },
+
+				}
+
+			};
+			
+		</script>
+		
+	</body>
+	
 </html>
