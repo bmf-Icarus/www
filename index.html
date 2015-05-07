@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<html xmlns = "http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Home Page</title>
+		<style type = "text/css">
+			body { background-color: #F0E68C}
+			h2	 { font-family: arial, sans-serif;
+			       color: blue}
+			input{ background-color: blue;
+				   color: yellow;
+				   font-weight: bold}
+		</style>
+	</head>
+	<body>
+		<h2>Football Stats</h2>
+		<form method = "post" action = "database.php">
+			<div>
+				<p>Select position:
+					<select name = "position">
+						<option selected = "selected">Quarterback</option>
+						<option>Halfback</option>
+						<option>Wide Reciever</option>
+						<option>Defense</option>
+					</select>
+				</p>
+				
+				<p>Select stats:
+					<select name = "stats">
+						<option selected = "selected">All Stats</option>
+						<option>Pass Yards</option>
+						<option>Pass TDs</option>
+						<option>INTs</option>
+						<option>Comp Percent</option>
+
+					</select>
+				</p>
+				<input type = "submit" value = "Send Query" />
+				
+			</div>
+		</form>
+	</body>
+
+</html>
