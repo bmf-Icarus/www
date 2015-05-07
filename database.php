@@ -95,17 +95,20 @@
 			
 			switch ( $position ) {
 				case "QB":
-					$from = "Player, QBStats";
-					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
+					$from = "Player, QbStats";
+					$where = " WHERE Player.PlayerID = QbStats.PlayerID";
 					break;
 				case "RB":
-					$from = "Player, RBStats";
+					$from = "Player, RbStats";
+					$where = " WHERE Player.PlayerID = RbStats.PlayerID";
 					break;
 				case "WR":
-					$from = "Player, WRStats";
+					$from = "Player, WrStats";
+					$where = " WHERE Player.PlayerID = WrStats.PlayerID";
 					break;
 				case "DB":
 					$from = "Player, DefStats";
+					$where = " WHERE Player.PlayerID = DefStats.PlayerID";
 					break;
 				case "GM":
 					$from = "Games";
