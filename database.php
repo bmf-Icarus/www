@@ -28,12 +28,15 @@
 
 			extract($_POST);
 			
+			$where = "";
+			
 			switch ( $stats ) {
 				case "All Stats":
 					$select = "*";
 					break;
 				case "Pass Yards":
-					$select = "PassYds";
+					$select = "Name, GameID, PassYds";
+					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
 					break;
 				case "Pass Touchdowns":
 					$select = "PassTds*";
@@ -84,18 +87,19 @@
 					$from = "Player, QBStats";
 					break;
 				case "RB":
-					$from = "RBStats";
+					$from = "Player, RBStats";
 					break;
 				case "WR":
-					$from = "WRStats";
+					$from = "Player, WRStats";
 					break;
 				case "DB":
-					$from = "DefStats";
+					$from = "Player, DefStats";
 					break;
 			}
 			
-			$query = "SELECT " . $select. " FROM " . $from;
+			$query = "SELECT " . $select. " FROM " . $from . $where;
 			$results = $db->query($query);
+			$cols = $results->numColumns(); 
 			
 		?>
 		<h3>Search Results</h3>
@@ -104,8 +108,17 @@
 				
 				$count = 0;
 				
+				print( "<tr>");
+				for ($i = 0; $i < $cols; $i++) {
+					$colName = $results->columnName($i);				
+						print("<td>$colName</td>" );
+				}
+				print( "</tr>" );
+				
 				while ( $row = $results->fetchArray(SQLITE3_ASSOC) ){
+									
 					print( "<tr>");
+					
 					foreach ( $row as $key => $value ){
 						print("<td>$value</td>" );
 					}
