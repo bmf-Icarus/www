@@ -35,28 +35,61 @@
 				case "Pass Yards":
 					$select = "PassYds";
 					break;
-				case "Pass TDs":
+				case "Pass Touchdowns":
 					$select = "PassTds*";
 					break;
-				case "INTs":
+				case "Interceptions":
 					$select = "Int";
 					break;
-				case "Comp Percent":
+				case "Completion Percentage":
 					$select = "CompPercent";
+					break;
+				case "Rush Attempts":
+					$select = "RushAtt";
+					break;
+				case "Rush Yards":
+					$select = "RushYds";
+					break;
+				case "Rush Touchdowns":
+					$select = "RushTds";
+					break;
+				case "Fumbles":
+					$select = "Fumble";
+					break;
+				case "Receptions":
+					$select = "Rec";
+					break;
+				case "Reception Yards":
+					$select = "RecYds";
+					break;
+				case "Reception Touchdowns":
+					$select = "RecTds";
+					break;
+				case "Drops":
+					$select = "Drops";
+					break;
+				case "Tackles":
+					$select = "Tackles";
+					break;
+				case "Sacks":
+					$select = "Sacks";
+					break;
+				case "Defensive Touchdowns":
+					$select = "DefTds";
 					break;
 			}
 			
 			switch ( $position ) {
-				case "Quarterback":
+				case "QB":
 					$from = "Player, QBStats";
 					break;
-				case "Halfback":
+				case "RB":
 					$from = "RBStats";
 					break;
-				case "Wide Reciever":
+				case "WR":
 					$from = "WRStats";
 					break;
-				case "Defense":
+				case "DB":
 					$from = "DefStats";
 					break;
 			}
@@ -79,6 +112,7 @@
 					print( "</tr>" );
 					
 				}
+
 			?>
 		</table>
 		<br /> Your search yielded <strong>
