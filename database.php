@@ -48,49 +48,49 @@
 					$select = "Name, GameID, CompPercent";
 					break;
 				case "Rush Attempts":
-					$select = "RushAtt";
+					$select = "Name, GameID, RushAtt";
 					break;
 				case "Rush Yards":
-					$select = "RushYds";
+					$select = "Name, GameID, RushYds";
 					break;
 				case "Rush Touchdowns":
-					$select = "RushTds";
+					$select = "Name, GameID, RushTds";
 					break;
 				case "Fumbles":
-					$select = "Fumble";
+					$select = "Name, GameID, Fumble";
 					break;
 				case "Receptions":
-					$select = "Rec";
+					$select = "Name, GameID, Rec";
 					break;
 				case "Reception Yards":
-					$select = "RecYds";
+					$select = "Name, GameID, RecYds";
 					break;
 				case "Reception Touchdowns":
-					$select = "RecTds";
+					$select = "Name, GameID, RecTds";
 					break;
 				case "Drops":
-					$select = "Drops";
+					$select = "Name, GameID, Drops";
 					break;
 				case "Tackles":
-					$select = "Tackles";
+					$select = "Name, GameID, Tackles";
 					break;
 				case "Sacks":
-					$select = "Sacks";
+					$select = "Name, GameID, Sacks";
 					break;
 				case "Defensive Touchdowns":
-					$select = "DefTds";
+					$select = "Name, GameID, DefTds";
 					break;
 				case "Home Team":
-					$select = "HomeTeam";
+					$select = "GameID, HomeTeam";
 					break;
 				case "Away Team":
-					$select = "AwayTeam";
+					$select = "GameID, AwayTeam";
 					break;
 				case "Home Score":
-					$select = "HomeScore";
+					$select = "GameID, HomeScore";
 					break;
 				case "Away Score":
-					$select = "AwayScore";
+					$select = "GameID, AwayScore";
 					break;
 					
 				case "Group Touchdowns":
@@ -101,17 +101,20 @@
 			
 			switch ( $position ) {
 				case "QB":
-					$from = "Player, QBStats";
-					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
+					$from = "Player, QbStats";
+					$where = " WHERE Player.PlayerID = QbStats.PlayerID";
 					break;
 				case "RB":
 					$from = "Player, RBStats";
+					$where = " WHERE Player.PlayerID = RbStats.PlayerID";
 					break;
 				case "WR":
 					$from = "Player, WRStats";
+					$where = " WHERE Player.PlayerID = WrStats.PlayerID";
 					break;
 				case "DB":
 					$from = "Player, DefStats";
+					$where = " WHERE Player.PlayerID = DefStats.PlayerID";
 					break;
 				case "GM":
 					$from = "Games";
