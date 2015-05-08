@@ -29,6 +29,7 @@
 			extract($_POST);
 			
 			$where = "";
+			$group = "";
 			
 			switch ( $stats ) {
 				case "All Stats":
@@ -47,64 +48,77 @@
 					$select = "Name, GameID, CompPercent";
 					break;
 				case "Rush Attempts":
-					$select = "Name, GameID, RushAtt";
+					$select = "RushAtt";
 					break;
 				case "Rush Yards":
-					$select = "Name, GameID, RushYds";
+					$select = "RushYds";
 					break;
 				case "Rush Touchdowns":
-					$select = "Name, GameID, RushTds";
+					$select = "RushTds";
 					break;
 				case "Fumbles":
-					$select = "Name, GameID, Fumble";
+					$select = "Fumble";
 					break;
 				case "Receptions":
-					$select = "Name, GameID, Rec";
+					$select = "Rec";
 					break;
 				case "Reception Yards":
-					$select = "Name, GameID, RecYds";
+					$select = "RecYds";
 					break;
 				case "Reception Touchdowns":
-					$select = "Name, GameID, RecTds";
+					$select = "RecTds";
 					break;
 				case "Drops":
-					$select = "Name, GameID, Drops";
+					$select = "Drops";
 					break;
 				case "Tackles":
-					$select = "Name, GameID, Tackles";
+					$select = "Tackles";
 					break;
 				case "Sacks":
-					$select = "Name, GameID, Sacks";
+					$select = "Sacks";
 					break;
 				case "Defensive Touchdowns":
-					$select = "Name, GameID, DefTds";
+					$select = "DefTds";
+					break;
+				case "Home Team":
+					$select = "HomeTeam";
+					break;
+				case "Away Team":
+					$select = "AwayTeam";
+					break;
+				case "Home Score":
+					$select = "HomeScore";
+					break;
+				case "Away Score":
+					$select = "AwayScore";
 					break;
 					
+				case "Group Touchdowns":
+					$select = "PassTds, COUNT(*)";
+					$group = " GROUP BY PassTds";
+					break;
 			}
 			
 			switch ( $position ) {
 				case "QB":
-					$from = "Player, QbStats";
-					$where = " WHERE Player.PlayerID = QbStats.PlayerID";
+					$from = "Player, QBStats";
+					$where = " WHERE Player.PlayerID = QBStats.PlayerID";
 					break;
 				case "RB":
-					$from = "Player, RbStats";
-					$where = " WHERE Player.PlayerID = RbStats.PlayerID";
+					$from = "Player, RBStats";
 					break;
 				case "WR":
-					$from = "Player, WrStats";
-					$where = " WHERE Player.PlayerID = WrStats.PlayerID";
+					$from = "Player, WRStats";
 					break;
 				case "DB":
 					$from = "Player, DefStats";
-					$where = " WHERE Player.PlayerID = DefStats.PlayerID";
 					break;
 				case "GM":
 					$from = "Games";
 					break;
 			}
 			
-			$query = "SELECT " . $select. " FROM " . $from . $where;
+			$query = "SELECT " . $select. " FROM " . $from . $where . $group;
 			$results = $db->query($query);
 			$cols = $results->numColumns(); 
 			
